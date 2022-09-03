@@ -1,0 +1,21 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html">
+
+<h:head>
+	<title>Form JSF</title>
+</h:head>
+<h:body>
+	<h:form id="formPessoa">
+		Nome:	
+		<h:inputText id="campoNome" value="#{pessoaBean.nome}"/>
+		<br/>
+		Sobrenome:
+		<h:inputText id="sobrenome" value="#{pessoaBean.sobrenome}"/>
+		<br/>	
+		<h:outputText value="#{pessoaBean.nomeCompleto}"/>
+		<br/>
+		Nome completo:
+		<h:commandButton value="Mostrar Nome" action="#{pessoaBean.mostrarNome}"/>
+	</h:form> 
+</h:body>
+</html>
