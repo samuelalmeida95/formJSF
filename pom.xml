@@ -45,13 +45,11 @@
 			<groupId>org.hibernate</groupId>
 			<artifactId>hibernate-entitymanager</artifactId>
 			<version>5.2.7.Final</version>
-			<scope>compile</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.postgresql</groupId>
 			<artifactId>postgresql</artifactId>
 			<version>42.3.3</version>
-			<scope>compile</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.glassfish</groupId>
@@ -64,9 +62,13 @@
 			<groupId>org.projectlombok</groupId>
 			<artifactId>lombok</artifactId>
 			<version>1.18.24</version>
+		</dependency>
+		<dependency>
+			<groupId>dom4j</groupId>
+			<artifactId>dom4j</artifactId>
+			<version>1.6.1</version>
 			<scope>provided</scope>
 		</dependency>
-
 	</dependencies>
 
 	<build>

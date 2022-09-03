@@ -1,40 +1,38 @@
 package br.com.samuel.formJSF;
 
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ViewScoped;
 
+import br.com.samuel.formJSF.dao.DaoGeneric;
+import br.com.samuel.formJSF.entidades.Pessoa;
+
+@ViewScoped
 @ManagedBean(name = "pessoaBean")
 public class PessoaBean {
 
-	private String nome;
-	private String sobrenome;
-	private String nomeCompleto;
+	private Pessoa pessoa = new Pessoa();
 
-	public String mostrarNome() {
-		nomeCompleto = nome + "-" + sobrenome;
+	private DaoGeneric<Pessoa> daoGeneric = new DaoGeneric<Pessoa>();
+
+	public String salvar() {
+		daoGeneric.salvar(pessoa);
+		pessoa = new Pessoa();
 		return "";
 	}
 
-	public String getNome() {
-		return nome;
+	public Pessoa getPessoa() {
+		return pessoa;
 	}
 
-	public void setNome(String nome) {
-		this.nome = nome;
+	public void setPessoa(Pessoa pessoa) {
+		this.pessoa = pessoa;
 	}
 
-	public String getSobrenome() {
-		return sobrenome;
+	public DaoGeneric<Pessoa> getDaoGeneric() {
+		return daoGeneric;
 	}
 
-	public void setSobrenome(String sobrenome) {
-		this.sobrenome = sobrenome;
-	}
-
-	public String getNomeCompleto() {
-		return nomeCompleto;
-	}
-
-	public void setNomeCompleto(String nomeCompleto) {
-		this.nomeCompleto = nomeCompleto;
+	public void setDaoGeneric(DaoGeneric<Pessoa> daoGeneric) {
+		this.daoGeneric = daoGeneric;
 	}
 }

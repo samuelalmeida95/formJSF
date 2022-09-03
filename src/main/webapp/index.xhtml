@@ -5,17 +5,20 @@
 	<title>Form JSF</title>
 </h:head>
 <h:body>
-	<h:form id="formPessoa">
-		Nome:	
-		<h:inputText id="campoNome" value="#{pessoaBean.nome}"/>
-		<br/>
-		Sobrenome:
-		<h:inputText id="sobrenome" value="#{pessoaBean.sobrenome}"/>
-		<br/>	
-		<h:outputText value="#{pessoaBean.nomeCompleto}"/>
-		<br/>
-		Nome completo:
-		<h:commandButton value="Mostrar Nome" action="#{pessoaBean.mostrarNome}"/>
-	</h:form> 
+	<h:form id="formPessoa"> 	
+		<h:outputLabel value="Nome:"/>	
+		<h:inputText id="campoNome" value="#{pessoaBean.pessoa.nome}" />
+		<br />
+		<h:outputLabel value="Sobrenome:"/>	
+		<h:inputText id="sobrenome" value="#{pessoaBean.pessoa.sobrenome}" />
+		<br />
+		<h:outputLabel value="Idade"/>	
+		<h:inputText id="idade" value="#{pessoaBean.pessoa.idade}" />
+		<br />
+		<!-- <h:outputLabel value="Data Nascimento"/>	
+		<h:inputText id="dataNascimento" value="#{pessoaBean.pessoa.dataNascimento}" />
+		<br /> -->
+		<h:commandButton value="Salvar" action="#{pessoaBean.salvar}" />
+	</h:form>
 </h:body>
 </html>
