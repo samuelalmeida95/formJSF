@@ -1,5 +1,7 @@
 package br.com.samuel.formJSF.dao;
 
+import java.util.List;
+
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
 
@@ -11,7 +13,6 @@ public class DaoGeneric<T> {
 		EntityManager entityManager = JPAUtil.getEntityManager();
 		EntityTransaction entityTransaction = entityManager.getTransaction();
 		entityTransaction.begin();
-
 		entityManager.persist(entidade);
 		entityTransaction.commit();
 		entityManager.close();
@@ -21,11 +22,9 @@ public class DaoGeneric<T> {
 		EntityManager entityManager = JPAUtil.getEntityManager();
 		EntityTransaction entityTransaction = entityManager.getTransaction();
 		entityTransaction.begin();
-
 		T retorno = entityManager.merge(entidade);
 		entityTransaction.commit();
 		entityManager.close();
-
 		return retorno;
 	}
 
@@ -33,7 +32,6 @@ public class DaoGeneric<T> {
 		EntityManager entityManager = JPAUtil.getEntityManager();
 		EntityTransaction entityTransaction = entityManager.getTransaction();
 		entityTransaction.begin();
-
 		entityManager.remove(entidade);
 		entityTransaction.commit();
 		entityManager.close();
@@ -52,5 +50,19 @@ public class DaoGeneric<T> {
 		
 		entityTransaction.commit();
 		entityManager.close();
+	}
+	
+	public List<T> getListEntity(Class<T> entidade) {
+		EntityManager entityManager = JPAUtil.getEntityManager();
+		EntityTransaction entityTransaction = entityManager.getTransaction();
+		entityTransaction.begin();
+
+		@SuppressWarnings("unchecked")
+		List<T> lista = entityManager.createQuery("from " + 
+												  entidade.getName()).getResultList();
+
+		entityTransaction.commit();
+		entityManager.close();
+		return lista;
 	}
 }
