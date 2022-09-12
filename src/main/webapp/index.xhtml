@@ -7,51 +7,62 @@
 </h:head>
 <h:body>
 	<h:form id="formPessoa">
-		<h:outputLabel value="Id:" />
-		<h:inputText id="campoId" value="#{pessoaBean.pessoa.id}" readonly="true" />
-		<br />
-		<h:outputLabel value="Nome:" />
-		<h:inputText id="campoNome" value="#{pessoaBean.pessoa.nome}" />
-		<br />
-		<h:outputLabel value="Sobrenome:" />
-		<h:inputText id="sobrenome" value="#{pessoaBean.pessoa.sobrenome}" />
-		<br />
-		<h:outputLabel value="Idade" />
-		<h:inputText id="idade" value="#{pessoaBean.pessoa.idade}" />
-		<br />
+		<h:panelGrid columns="2">
+			<h:outputLabel value="Id:" />
+			<h:inputText id="campoId" value="#{pessoaBean.pessoa.id}" readonly="true" />
+			
+			<h:outputLabel value="Nome:" />
+			<h:inputText id="campoNome" value="#{pessoaBean.pessoa.nome}" />
 
-		<h:commandButton value="Novo" action="#{pessoaBean.novo}" />
-		<h:commandButton value="Salvar" action="#{pessoaBean.salvar}" />
-		<h:commandButton value="Remove" action="#{pessoaBean.remove}" />
-		
-		<h:dataTable value="#{pessoaBean.pessoas}" var="pessoa">
+			<h:outputLabel value="Sobrenome:" />
+			<h:inputText id="sobrenome" value="#{pessoaBean.pessoa.sobrenome}" />
+
+			<h:outputLabel value="Idade" />
+			<h:inputText id="idade" value="#{pessoaBean.pessoa.idade}" />
+			
+			<h:outputLabel />
+			<h:panelGroup>
+				<h:commandButton value="Novo" action="#{pessoaBean.novo}" />
+				<h:commandButton value="Salvar" action="#{pessoaBean.salvar}" />
+				<h:commandButton value="Remove" action="#{pessoaBean.remove}" />
+			</h:panelGroup>
+		</h:panelGrid>
+
+		<h:dataTable value="#{pessoaBean.pessoas}" var="pessoa" border="2" cellpadding="6" >
 			<h:column>
+				<f:facet name="header">ID</f:facet>
 				<h:outputText value="#{pessoa.id}" />
 			</h:column>
 
 			<h:column>
+				<f:facet name="header">Nome</f:facet>
 				<h:outputText value="#{pessoa.nome}" />
 			</h:column>
 
 			<h:column>
+				<f:facet name="header">Sobrenome</f:facet>
 				<h:outputText value="#{pessoa.sobrenome}" />
 			</h:column>
 
 			<h:column>
+				<f:facet name="header">Idade</f:facet>
 				<h:outputText value="#{pessoa.idade}" />
 			</h:column>
 
 			<h:column>
-				<h:commandLink value="Editar">
+				<f:facet name="header">Editar</f:facet>
+				<h:commandLink value="Editar ">
 					<f:setPropertyActionListener target="#{pessoaBean.pessoa}" value="#{pessoa}" />
 				</h:commandLink>
 			</h:column>
-
+			
 			<h:column>
+				<f:facet name="header">Excluir</f:facet>
 				<h:commandLink value="Excluir" action="#{pessoaBean.remove}">
-					<f:setPropertyActionListener target="#{pessoaBean.pessoa}" value="#{pessoa}" />
-				</h:commandLink>
-			</h:column>
+					<f:setPropertyActionListener target="#{pessoaBean.pessoa}"
+						value="#{pessoa}" />
+				</h:commandLink>			
+			</h:column>		
 		</h:dataTable>
 	</h:form>
 </h:body>
