@@ -20,6 +20,12 @@
 			<h:outputLabel value="Idade" />
 			<h:inputText id="idade" value="#{pessoaBean.pessoa.idade}" />
 			
+			<h:outputLabel value="Sexo" />
+			<h:selectOneMenu id="campoSexo" value="#{pessoaBean.pessoa.sexo}">
+				<f:selectItem itemValue="Masculino"/>
+				<f:selectItem itemValue="Feminino"/>
+			</h:selectOneMenu>
+			
 			<h:outputLabel />
 			<h:panelGroup>
 				<h:commandButton value="Novo" action="#{pessoaBean.novo}" />

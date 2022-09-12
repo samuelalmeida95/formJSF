@@ -22,6 +22,7 @@ public class Pessoa implements Serializable {
 	private String nome;
 	private String sobrenome;
 	private Integer idade;
+	private String sexo;
 	
 	@Temporal(TemporalType.DATE)
 	private Date dataNascimento;
@@ -85,5 +86,13 @@ public class Pessoa implements Serializable {
 			return false;
 		Pessoa other = (Pessoa) obj;
 		return Objects.equals(id, other.id);
+	}
+
+	public String getSexo() {
+		return sexo;
+	}
+
+	public void setSexo(String sexo) {
+		this.sexo = sexo;
 	}
 }
