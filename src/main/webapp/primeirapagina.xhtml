@@ -3,11 +3,16 @@
 	xmlns:f="http://java.sun.com/jsf/core">
 
 <h:head>
-	<title>Form JSF</title>
+	<title>Cadastro de usuário</title>
 </h:head>
 <h:body>
 	<h:form id="formPessoa">
 		<h:panelGrid columns="2">
+
+			<f:facet name="header">
+				<h:outputText value="Cadastro de usuário" />
+			</f:facet>
+
 			<h:outputLabel value="Id:" />
 			<h:inputText id="campoId" value="#{pessoaBean.pessoa.id}"
 				readonly="true" />
@@ -51,10 +56,27 @@
 
 			<h:outputLabel value="Ativo" />
 			<h:selectBooleanCheckbox value="#{pessoaBean.pessoa.ativo}" />
+
+			<h:outputLabel value="Login" />
+			<h:inputText value="#{pessoaBean.pessoa.login}" />
+
+			<h:outputLabel value="Senha" />
+			<h:inputSecret value="#{pessoaBean.pessoa.senha}" />
+
+			<h:outputLabel value="Perfil" />
+			<h:selectOneMenu id="campoPerfil" value="#{pessoaBean.pessoa.perfilUser}">
+				<f:selectItem itemValue="ADMINISTRADOR" />
+				<f:selectItem itemValue="SECRETARIO" />
+			</h:selectOneMenu>
 		</h:panelGrid>
 
 		<h:dataTable value="#{pessoaBean.pessoas}" var="pessoa" border="2"
 			cellpadding="6">
+
+			<f:facet name="header">
+				<h:outputText value="Lista de usuários cadastrados" />
+			</f:facet>
+
 			<h:column>
 				<f:facet name="header">ID</f:facet>
 				<h:outputText value="#{pessoa.id}" />
