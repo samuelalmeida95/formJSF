@@ -9,8 +9,9 @@
 	<h:form id="formPessoa">
 		<h:panelGrid columns="2">
 			<h:outputLabel value="Id:" />
-			<h:inputText id="campoId" value="#{pessoaBean.pessoa.id}" readonly="true" />
-			
+			<h:inputText id="campoId" value="#{pessoaBean.pessoa.id}"
+				readonly="true" />
+
 			<h:outputLabel value="Nome:" />
 			<h:inputText id="campoNome" value="#{pessoaBean.pessoa.nome}" />
 
@@ -19,13 +20,23 @@
 
 			<h:outputLabel value="Idade" />
 			<h:inputText id="idade" value="#{pessoaBean.pessoa.idade}" />
-			
+
 			<h:outputLabel value="Sexo" />
 			<h:selectOneMenu id="campoSexo" value="#{pessoaBean.pessoa.sexo}">
-				<f:selectItem itemValue="Masculino"/>
-				<f:selectItem itemValue="Feminino"/>
+				<f:selectItem itemValue="Masculino" />
+				<f:selectItem itemValue="Feminino" />
 			</h:selectOneMenu>
-			
+
+			<h:outputLabel value="Frameworks" />
+			<h:selectManyMenu id="campoFramework"
+				value="#{pessoaBean.pessoa.frameworks}" style="height:150px;">
+				<f:selectItem itemValue="Hibernate" />
+				<f:selectItem itemValue="Spring Boot" />
+				<f:selectItem itemValue="Angular" />
+				<f:selectItem itemValue="React" />
+				<f:selectItem itemValue="PrimeFaces" />
+			</h:selectManyMenu>
+
 			<h:outputLabel />
 			<h:panelGroup>
 				<h:commandButton value="Novo" action="#{pessoaBean.novo}" />
@@ -34,7 +45,8 @@
 			</h:panelGroup>
 		</h:panelGrid>
 
-		<h:dataTable value="#{pessoaBean.pessoas}" var="pessoa" border="2" cellpadding="6" >
+		<h:dataTable value="#{pessoaBean.pessoas}" var="pessoa" border="2"
+			cellpadding="6">
 			<h:column>
 				<f:facet name="header">ID</f:facet>
 				<h:outputText value="#{pessoa.id}" />
@@ -58,17 +70,18 @@
 			<h:column>
 				<f:facet name="header">Editar</f:facet>
 				<h:commandLink value="Editar ">
-					<f:setPropertyActionListener target="#{pessoaBean.pessoa}" value="#{pessoa}" />
+					<f:setPropertyActionListener target="#{pessoaBean.pessoa}"
+						value="#{pessoa}" />
 				</h:commandLink>
 			</h:column>
-			
+
 			<h:column>
 				<f:facet name="header">Excluir</f:facet>
 				<h:commandLink value="Excluir" action="#{pessoaBean.remove}">
 					<f:setPropertyActionListener target="#{pessoaBean.pessoa}"
 						value="#{pessoa}" />
-				</h:commandLink>			
-			</h:column>		
+				</h:commandLink>
+			</h:column>
 		</h:dataTable>
 	</h:form>
 </h:body>
