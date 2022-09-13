@@ -43,6 +43,9 @@
 				<h:commandButton value="Salvar" action="#{pessoaBean.salvar}" />
 				<h:commandButton value="Remove" action="#{pessoaBean.remove}" />
 			</h:panelGroup>
+			
+			<h:outputLabel/>
+			<h:selectBooleanCheckbox value="#{pessoaBean.pessoa.ativo}"/>
 		</h:panelGrid>
 
 		<h:dataTable value="#{pessoaBean.pessoas}" var="pessoa" border="2"
