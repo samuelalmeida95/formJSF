@@ -81,9 +81,16 @@ public class PessoaBean {
 			HttpServletRequest req = (HttpServletRequest) externalContext.getRequest();
 			HttpSession session = req.getSession();
 
-			session.setAttribute("usuarioLogado", pessoaUser);
+			session.setAttribute("usuariologado", pessoaUser);
 			return "primeirapagina.xhtml";
 		}
 		return "login.xhtml";
+	}
+
+	public boolean permiteAcesso(String acesso) {
+		FacesContext context = FacesContext.getCurrentInstance();
+		ExternalContext externalContext = context.getExternalContext();
+		Pessoa pessoaUser = (Pessoa) externalContext.getSessionMap().get("usuarioLogado");
+		return pessoaUser.getPerfilUser().equals(acesso);
 	}
 }
